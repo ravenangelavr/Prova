@@ -1,3 +1,39 @@
+<head>
+    <h1>App Flask</h1>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background-color: #333;
+            padding: 20px;
+            margin: 20px;
+            border: 2px solid white;
+        }
+
+        code {
+            display: block;
+            color: #00FF00; /* Colore verde */
+            font-size: 14px;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+
+        .comment {
+            background-color: black;
+            color: #FF00FF; /* Colore magenta */
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <code>
 from flask import Flask, request, render_template
 
 app = Flask(__name__)
@@ -11,3 +47,11 @@ def index():
 
 if __name__ == '__main__':
     app.run()
+        </code>
+    </div>
+
+
+
+
+
+
