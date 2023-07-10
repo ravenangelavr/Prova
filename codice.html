@@ -1,4 +1,5 @@
 <head>
+    <h1>Codice webscraping con autocompilazione</h1>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina HTML con Codice e Commento</title>
@@ -82,7 +83,31 @@ driver.quit()
     </div>
 
     <div class="comment">
-        <p>Questo è un commento sul codice. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec convallis, tortor ut interdum commodo, dui erat posuere risus, at fringilla nibh odio eget dolor.</p>
+
+        <ul>
+        <li> from selenium import webdriver e from selenium.webdriver.common.by import By: Queste righe importano le classi necessarie dal modulo Selenium per l'automazione del browser.</li>
+        
+        <li>lista_parole = ["parola1", "parola2", "parola3", ...]: Questa riga definisce una lista di parole che verranno utilizzate come password per il tentativo di accesso.</li>
+            
+        <li>driver = webdriver.Chrome(): Questa riga inizializza il driver del browser. Nel codice fornito viene utilizzato il browser Chrome, quindi viene creato un oggetto webdriver.Chrome().</li>
+            
+        <li>url = "https://it.wikipedia.org/wiki/Pagina_principale": Questa riga assegna l'URL della pagina Wikipedia italiana (Pagina principale) alla variabile url.</li>
+
+        <li>driver.get(url): Questa riga apre la pagina web specificata dalla variabile url utilizzando il metodo get() del driver. In questo caso, viene aperta la pagina principale di Wikipedia italiana.</li>
+
+        <li>login_link = driver.find_element(By.ID, "pt-login"): Questa riga trova l'elemento del link di accesso utilizzando il metodo find_element() del driver. Viene utilizzato il metodo By.ID per indicare che l'elemento deve essere trovato in base all'ID.</li>
+
+        <li>login_link.click(): Questa riga fa clic sul link di accesso trovato precedentemente, utilizzando il metodo click().</li>
+
+        <li>username_field = driver.find_element(By.ID, "wpName1"): Questa riga trova l'elemento del campo di input per il nome utente utilizzando il metodo find_element() del driver. Viene utilizzato il metodo By.ID e l'ID corrispondente al campo di input.</li>
+
+        <li>username_field.send_keys("Angela"): Questa riga immette il valore "Angela" nel campo di input del nome utente utilizzando il metodo send_keys().</li>
+
+        <li>Il codice successivo utilizza un loop for per iterare attraverso la lista delle password (lista_parole).</li>
+        
+        <li>All'interno del loop, viene trovato l'elemento del campo di input per la password utilizzando il metodo find_element() e viene inserita una password dalla lista utilizzando send_keys().</li>
+        </ul>
+        
     </div>
 </body>
 </html>
