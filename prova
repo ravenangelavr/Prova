@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benvenuto nella pagina sulla Cybersecurity</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: monospace;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Benvenuto nella pagina sulla Cybersecurity</h1>
+
+    <form>
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <input type="submit" value="Invia">
+    </form>
+
+    <h2>Principi Generali della Cybersecurity</h2>
+    <p>La cybersecurity è un campo che si occupa di proteggere i sistemi informatici e le reti da minacce e attacchi informatici. Comprende una serie di principi e pratiche che consentono di mantenere i dati e le informazioni al sicuro.</p>
+
+    <ul>
+        <li><strong>Riservatezza:</strong> Garantire che le informazioni siano accessibili solo alle persone autorizzate. Per saperne di più, visita <a href="https://example.com/riservatezza" target="_blank">questo link</a>.</li>
+        <li><strong>Integrità:</strong> Assicurarsi che i dati non siano modificati o alterati senza autorizzazione. Puoi approfondire su <a href="https://example.com/integrita" target="_blank">questo link</a>.</li>
+        <li><strong>Disponibilità:</strong> Mantenere i sistemi e le risorse disponibili e funzionanti quando necessario. Leggi di più su <a href="https://example.com/disponibilita" target="_blank">questa pagina</a>.</li>
+    </ul>
+
+    <h2>Immagini sulla Cybersecurity</h2>
+    <img src="image1.jpg" alt="Immagine 1" width="300">
+    <img src="image2.jpg" alt="Immagine 2" width="300">
+
+</body>
+</html>
