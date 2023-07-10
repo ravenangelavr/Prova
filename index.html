@@ -32,15 +32,28 @@
             height: 100px;
         }
     </style>
+    <script>
+        function showWelcomeMessage() {
+            var nameInput = document.getElementById("name");
+            var name = nameInput.value;
+
+            if (name) {
+                var welcomeMessage = document.getElementById("welcomeMessage");
+                welcomeMessage.textContent = "Benvenuto, " + name + "!";
+            }
+        }
+    </script>
 </head>
 <body>
     <h1>Benvenuto nella pagina sulla Cybersecurity</h1>
 
-    <form>
+    <form onsubmit="event.preventDefault(); showWelcomeMessage();">
         <label for="name">Nome:</label>
         <input type="text" id="name" name="name" required><br><br>
         <input type="submit" value="Invia">
     </form>
+
+    <h2 id="welcomeMessage"></h2>
 
     <h2>Introduzione alla Cybersecurity</h2>
     <p>La cybersecurity è il campo di studio che si occupa di proteggere i sistemi informatici e le reti da minacce e attacchi informatici. Il suo obiettivo è garantire la riservatezza, l'integrità e la disponibilità delle informazioni e dei sistemi.</p>
