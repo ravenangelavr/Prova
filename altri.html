@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentazioni</title>
+    <style>
+        body {
+            background-color: #6495ED; /* Colore sfondo azzurro */
+            margin: 0;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-size: 32px;
+            margin-top: 50px;
+        }
+
+        .circle {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5); /* Colore cerchi trasparenti */
+            animation: moveCircle 5s infinite linear;
+        }
+
+        @keyframes moveCircle {
+            0% {
+                top: 50%;
+                left: 50%;
+            }
+            50% {
+                top: 10%;
+                left: 10%;
+            }
+            100% {
+                top: 50%;
+                left: 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Presentazioni</h1>
+
+    <div class="circle"></div>
+
+    <script>
+        function createCircles() {
+            const colors = ["#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#FF00FF"]; // Colori dei cerchi
+            const container = document.body;
+            const numCircles = 5; // Numero di cerchi da creare
+
+            for (let i = 0; i < numCircles; i++) {
+                const circle = document.createElement("div");
+                circle.classList.add("circle");
+                circle.style.backgroundColor = colors[i % colors.length];
+                container.appendChild(circle);
+            }
+        }
+
+        createCircles();
+    </script>
+</body>
+</html>
