@@ -3,6 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menù cliccabile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        a {
+            text-decoration: none;
+            color: #000;
+            padding: 5px;
+            border: 1px solid #000;
+        }
+        a:hover {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</body>
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Benvenuto/a al corso di Cybersecurity!</title>
     <img src="Screenshot 2023-07-10 095443.png" alt="Immagine 1">
     <style>
@@ -46,7 +83,7 @@
     </script>
 </head>
 <body>
-    <h1>Benvenuto/a al corso di Cybersecurity</h1>
+    <h1>Benvenuto/a al corso di Cybersecurity!</h1>
 
     <form onsubmit="event.preventDefault(); showWelcomeMessage();">
         <label for="name">Nome:</label>
@@ -89,9 +126,19 @@
     </ul>
 
     <h2>Esempi di esercizi</h2>
+    
+<ol>
+  <li>
+      <a href="codice.html">1) Webscraping autocompilazione</a>
+  </li>
+  <li>Elemento 2</li>
+  <li>Elemento 3</li>
+</ol>
+
     <p>1)Webscraping autocompilazione</p>
      <a href="codice.html">Webscraping autocompilazione</a>
-    
+    <p></p>
+    <p></p>
 
 </body>
 </html>
